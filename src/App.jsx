@@ -1,20 +1,28 @@
-import React, { useState } from 'react';
-import { Header, UserInput, InvestmentTable } from "./components";
-import { calculateInvestmentResults } from "./util/investment"; // Adjust the path based on your project structure
+import { useState } from 'react';
+import { Header, UserInput, Results } from "./components";
 
 function App() {
-  const [investmentData, setInvestmentData] = useState([]);
+  const [userInput, setUserInput] = useState({
+    initialInvestment: 10000,
+    annualInvestment: 1200,
+    expectedReturn: 6,
+    duration: 10
+  });
 
-  const handleCalculate = (inputValues) => {
-    const calculatedResults = calculateInvestmentResults(inputValues);
-    setInvestmentData(calculatedResults);
-  };
+  function handleChange(InputIdentifier, newValue) {
+    setUserInput(prevUserInput => {
+      return {
+        ...prevUserInput,
+        [InputIdentifier]: newValue
+      }
+    });
+  }
 
   return (
     <>
       <Header />
-      <UserInput />
-      {<InvestmentTable investmentData={investmentData} />}
+      <UserInput userInput={userInput} onChangeInput={handleChange} />
+      <Results input={userInput} />
     </>
   );
 }

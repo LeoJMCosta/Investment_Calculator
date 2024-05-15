@@ -1,9 +1,9 @@
 import Header from "./Header";
 import UserInput from "./Userinput";
-import InvestmentTable from "./InvestmentTable";
+import Results from "./Results";
 
 export {
     Header,
     UserInput,
-    InvestmentTable
+    Results
 }
