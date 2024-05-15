@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       <Header />
-      <UserInput onCalculate={handleCalculate} />
+      <UserInput />
       {<InvestmentTable investmentData={investmentData} />}
     </>
   );
