@@ -11,6 +11,13 @@ const UserInput = ({ onCalculate }) => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setInputValues({ ...inputValues, [name]: value });
+
+        // Convert input values to numbers
+        const numericInputValues = {
+            ...inputValues,
+            [name]: parseFloat(value),
+        };
+        onCalculate(numericInputValues);
     };
 
     const handleSubmit = (e) => {
